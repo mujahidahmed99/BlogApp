@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210924234444_addUserToDatabase")]
+    [Migration("20210925231909_addUserToDatabase")]
     partial class addUserToDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
