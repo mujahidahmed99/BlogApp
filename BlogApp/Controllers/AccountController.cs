@@ -12,5 +12,9 @@ namespace BlogApp.Controllers
         {
             return View();
         }
+        public IActionResult Register()
+        {
+            return View();
+        }
     }
 }
