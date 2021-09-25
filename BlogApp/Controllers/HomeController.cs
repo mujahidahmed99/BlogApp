@@ -23,7 +23,7 @@ namespace BlogApp.Controllers
         {
             return View();
         }
-        public IActionResult Privacy()
+        public IActionResult Blogs()
         {
             return View();
         }
