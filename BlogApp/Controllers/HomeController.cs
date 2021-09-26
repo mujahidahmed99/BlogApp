@@ -23,11 +23,6 @@ namespace BlogApp.Controllers
         {
             return View();
         }
-        [Authorize]
-        public IActionResult Blogs()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
