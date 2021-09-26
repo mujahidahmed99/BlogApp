@@ -1,13 +1,19 @@
 ﻿
 @{
+    var error = TempData["Error"] as string;
 }
+
 
 <div class="container">
     <div class="row">
         <div class="col-md-4 offset-md-4">
             <div class="login-form bg-light mt-4 p-4">
-                <form action="" method="" class="row g-3">
+                <form method="post" asp-action="validate" class="row g-3">
                     <h4>Welcome Back</h4>
+                    @if (!string.IsNullOrEmpty(error))
+                    {
+                        <span class="alert-danger" style="padding:10px">@error</span>
+                    }
                     <div class="col-12">
                         <label>Username</label>
                         <input type="text" name="username" class="form-control" placeholder="Username">

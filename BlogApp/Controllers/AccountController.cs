@@ -62,6 +62,30 @@ namespace BlogApp.Controllers
             }
             return View("Register");
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Validate(string username, string password)
+        {
+            var userexists = _db.Users.Where(u => u.Username == username).FirstOrDefault();
+            if(userexists == null)
+            {
+                TempData["error"] = "Username or password is invalid";
+                return View("Login");
+            }
+            var hashpassword = Crypto.VerifyHashedPassword(userexists.Password, password);
+            
+            if(hashpassword)
+            {
+                var claims = new List<Claim>();
+                claims.Add(new Claim(ClaimTypes.NameIdentifier, username));
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                await HttpContext.SignInAsync(claimsPrincipal);
+                return RedirectToAction("index", "home");
+            }
+            TempData["error"] = "Username or password is invalid";
+            return View("Login");
+        }
         [Authorize]
         public async Task<IActionResult> Logout()
         {
