@@ -1,7 +1,45 @@
-﻿
+﻿@model IEnumerable<BlogApp.Models.Blog>
 @{
     ViewData["Title"] = "MyBlogs";
 }
 
-<h1>MyBlogs</h1>
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">My Blogs</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="BLog" asp-action="Create" class="btn btn-primary">Create new Blog</a>
+        </div>
+    </div>
+    <br />
+
+    @if (Model.Count() > 0)
+    {
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card mb-5 shadow-sm">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h2>This is the blog title</h2>
+                        </div>
+                        <div class="card-text">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                Deleniti corporis quis ab. Exercitationem et quibusdam
+                                impedit? Sint vitae labore nulla sit, dignissimos non tempore,
+                                maxime facere, quod harum aliquid in...
+                            </p>
+                        </div>
+                        <a href="#" class="btn btn-outline-primary rounded-0 float-end">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else 
+    {
+        <p>You have no blogs created.</p>
+    }
+
 
