@@ -23,6 +23,7 @@ namespace BlogApp.Controllers
         {
             return View();
         }
+        [Authorize]
         public IActionResult Blogs()
         {
             return View();
