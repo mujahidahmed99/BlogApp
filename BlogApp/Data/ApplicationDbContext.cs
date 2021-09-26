@@ -14,5 +14,6 @@ namespace BlogApp.Data
 
         }
         public DbSet<User> Users { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
     }
 }
