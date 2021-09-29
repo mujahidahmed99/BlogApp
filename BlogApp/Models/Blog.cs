@@ -15,7 +15,7 @@ namespace BlogApp.Models
         public string Description { get; set; }
         [Column(TypeName = "ntext")]
         public string Body { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
         public int UserId { get; set; }
         public virtual User User { get; set; }
 

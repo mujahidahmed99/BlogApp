@@ -1,0 +1,32 @@
+﻿
+@model BlogApp.Models.Blog
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="login-form bg-light mt-4 p-4">
+                <form method="post" class="row">
+                    <h4>Welcome Back</h4>
+                    <input hidden asp-for="CreatedAt"/>
+                    <div class="col-12">
+                        <label asp-for="Title"></label>
+                        <input asp-for="Title" class="form-control" placeholder="Title">
+                    </div>
+                    <div class="col-12">
+                        <label asp-for="Description"></label>
+                        <input asp-for="Description" class="form-control" placeholder="Description">
+                    </div>
+                    <div class="col-12">
+                        <label asp-for="Body"></label>
+                        <textarea asp-for="Body" class="form-control" id="editor" rows="30"></textarea>
+                    </div>
+                    <div class="col-6 pt-3">
+                        <a asp-action="MyBlogs" class="btn btn-danger w-75">Back</a>
+                    </div>
+                    <div class="col-6 pt-3 text-right">
+                        <input type="submit" class="btn btn-info w-75" value="Create" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

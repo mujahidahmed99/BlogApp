@@ -28,10 +28,24 @@ namespace BlogApp.Controllers
             IEnumerable<Blog> objList = _db.Blogs.Where(u => u.User.Username == username);
             return View(objList);
         }
+        // GET Create
         [Authorize]
         public IActionResult Create()
         {
             return View();
+        }
+        // POST Create
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Blog obj)
+        {
+            var username = HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _db.Users.Where(u => u.Username == username).FirstOrDefault();
+            obj.User = user;
+            _db.Blogs.Add(obj);
+            _db.SaveChanges();
+            return RedirectToAction("MyBlogs");
         }
     }
 }
